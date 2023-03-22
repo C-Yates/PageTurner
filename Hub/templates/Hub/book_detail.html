@@ -1,0 +1,25 @@
+{% extends 'Hub/templates/Hub/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="book">
+    <h1 class="title">{{ book.title }}</h1>
+    <p class="title"><strong>Author:</strong> {{ book.author }}</p>
+    <p class="title"><strong>Published:</strong> {{ book.published }}</p>
+    
+    <h3 class="title">Ratings</h3>
+    {% if ratings %}
+        <ul class="remove_bullet">
+        {% for rating in ratings %}
+            <li>{{ rating.user.username }} rated {{ rating.score }} / 5 <img src="{% static 'images/star.jpeg' %}" /></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p class="title">No ratings yet.</p>
+    {% endif %}
+    
+    <h3 class="title">Have your say</h3>
+    <li class="remove_bullet"><a href="{% url 'new_rating' book.id %}">Rate this book</a></li>
+</div>
+{% endblock %}

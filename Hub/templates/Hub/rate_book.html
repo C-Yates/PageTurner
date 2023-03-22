@@ -1,0 +1,13 @@
+{% extends 'Hub/templates/Hub/base.html' %}
+
+{% block content %}
+<div class="book">
+  <h1 class="title">Rate: {{ book.title }}</h1>
+  <form method="post" action="{% url 'book_detail' book.id %}">
+    {% csrf_token %}
+    <label for="score" class="title">Score:</label>
+    <input type="number" name="score" min="1" max="5" required>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}

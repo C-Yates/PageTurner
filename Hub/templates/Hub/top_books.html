@@ -1,0 +1,18 @@
+{% extends 'Hub/templates/Hub/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4"></div>
+            <div class="book">
+                <h1 class="title">Top 10 Books</h1>
+                <ol>
+                    {% for book in top_books %}
+                    <li class="remove_bullet">{{ book.title }} ({{ book.avg_rating|floatformat:1 }}/5 stars)</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
